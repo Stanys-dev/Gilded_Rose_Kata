@@ -1,25 +1,21 @@
-import Item from "@/items/Item.class";
 import {isSellDateExpired} from "@/helpers";
+import {IUpdateItemQualityArgs} from "@/interfaces";
 
-export default class BackstagePass extends Item {
-  constructor(name: string, sellIn: number, quality: number) {
-    super(name, sellIn, quality);
-  }
+export default class BackstagePass {
+  public static getUpdatedQuality({sellIn, quality}: IUpdateItemQualityArgs): number {
 
-  updateQuality() {
-
-    if (isSellDateExpired(this.sellIn)) {
-      this.quality = 0;
-      return
+    if (isSellDateExpired(sellIn)) {
+      return 0
     }
 
-    if (this.sellIn > 10) {
-      this.quality += 1;
-    } else if (this.sellIn > 5 && this.sellIn <= 10) {
-      this.quality += 2;
-    } else if (this.sellIn <= 5) {
-      this.quality += 3;
+    if (sellIn > 10) {
+      quality += 1;
+    } else if (sellIn > 5 && sellIn <= 10) {
+      quality += 2;
+    } else if (sellIn <= 5) {
+      quality += 3;
     }
 
+    return quality;
   }
 }

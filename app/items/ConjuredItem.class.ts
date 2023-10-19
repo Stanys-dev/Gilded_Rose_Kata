@@ -1,19 +1,15 @@
-import Item from "@/items/Item.class";
 import {getQualityModificationValue} from "@/helpers";
+import {IUpdateItemQualityArgs} from "@/interfaces";
 
-export default class ConjuredItem extends Item {
-  private qualityModificationValue = 2;
+export default class ConjuredItem {
+  private static readonly qualityModificationValue = 1;
 
-  constructor(name: string, sellIn: number, quality: number) {
-    super(name, sellIn, quality);
-  }
-
-  updateQuality() {
+  public static getUpdatedQuality({sellIn, quality}: IUpdateItemQualityArgs): number {
     const qualityModificationValue = getQualityModificationValue({
-      sellIn: this.sellIn,
+      sellIn: sellIn,
       defaultValue: this.qualityModificationValue
     });
 
-    this.quality -= qualityModificationValue;
+    return quality - qualityModificationValue;
   }
 }

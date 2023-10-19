@@ -20,24 +20,16 @@ export default class GildedRose {
 
       switch (item.name) {
         case 'Aged Brie':
-          const agedBrie = new AgedBrie(item.name, item.sellIn, item.quality);
-          agedBrie.updateQuality();
-          item.quality = agedBrie.quality;
+          item.quality = AgedBrie.getUpdatedQuality({sellIn: item.sellIn, quality: item.quality})
           break;
         case 'Backstage passes to a TAFKAL80ETC concert':
-          const backstagePass = new BackstagePass(item.name, item.sellIn, item.quality);
-          backstagePass.updateQuality();
-          item.quality = backstagePass.quality;
+          item.quality = BackstagePass.getUpdatedQuality({sellIn: item.sellIn, quality: item.quality})
           break;
         case 'Conjured':
-          const conjuredItem = new ConjuredItem(item.name, item.sellIn, item.quality);
-          conjuredItem.updateQuality();
-          item.quality = conjuredItem.quality;
+          item.quality = ConjuredItem.getUpdatedQuality({sellIn: item.sellIn, quality: item.quality})
           break;
         default:
-          const basicItem = new BasicItem(item.name, item.sellIn, item.quality);
-          basicItem.updateQuality();
-          item.quality = basicItem.quality;
+          item.quality = BasicItem.getUpdatedQuality({sellIn: item.sellIn, quality: item.quality})
           break;
       }
 
