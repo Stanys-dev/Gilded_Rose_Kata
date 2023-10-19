@@ -1,4 +1,6 @@
-import { Item, GildedRose } from '@/gilded-rose';
+import Item from "@/items/Item.class";
+import GildedRose from "@/gilded-rose";
+import {QUALITY_LOWER_LIMIT, QUALITY_UPPER_LIMIT} from "@/constants";
 
 describe('Gilded Rose', () => {
   describe('Basic Items', () => {
@@ -26,9 +28,9 @@ describe('Gilded Rose', () => {
       expect(items[0].quality).toBe(expectedQuality);
     })
 
-    it('must not decrease quality below zero', () => {
+    it('must not decrease quality below lower limit', () => {
       const expectedSellIn = item.sellIn - 1;
-      const expectedQuality = 0;
+      const expectedQuality = QUALITY_LOWER_LIMIT;
 
       const items = gildedRose.updateQuality();
       expect(items[0].name).toBe(itemName);
@@ -62,9 +64,9 @@ describe('Gilded Rose', () => {
       expect(items[0].quality).toBe(expectedQuality);
     });
 
-    it('must not increase quality above 50', () => {
+    it('must not increase quality above upper limit', () => {
       const expectedSellIn = item.sellIn - 1;
-      const expectedQuality = 50;
+      const expectedQuality = QUALITY_UPPER_LIMIT;
 
       const items = gildedRose.updateQuality();
       expect(items[0].name).toBe(itemName);
@@ -127,6 +129,20 @@ describe('Gilded Rose', () => {
       expect(items[0].quality).toBe(expectedQuality);
     });
 
+    it('must not increase quality above upper limit', () => {
+      const itemName = 'Backstage passes to a TAFKAL80ETC concert';
+      const item = new Item(itemName, 5, QUALITY_UPPER_LIMIT);
+      const gildedRose = new GildedRose([item]);
+
+      const expectedSellIn = item.sellIn - 1;
+      const expectedQuality = QUALITY_UPPER_LIMIT;
+
+      const items = gildedRose.updateQuality();
+      expect(items[0].name).toBe(itemName);
+      expect(items[0].sellIn).toBe(expectedSellIn);
+      expect(items[0].quality).toBe(expectedQuality);
+    });
+
     it('must drop quality to zero when sellIn is less then zero', () => {
       const itemName = 'Backstage passes to a TAFKAL80ETC concert';
       const item = new Item(itemName, 0, 20);
@@ -143,7 +159,7 @@ describe('Gilded Rose', () => {
   });
 
   describe.skip('Conjured Items', () => {
-    const itemName = 'Conjured Apple';
+    const itemName = 'Conjured';
     const item = new Item(itemName, 1, 3);
     const gildedRose = new GildedRose([item]);
 
@@ -166,5 +182,15 @@ describe('Gilded Rose', () => {
       expect(items[0].sellIn).toBe(expectedSellIn);
       expect(items[0].quality).toBe(expectedQuality);
     });
+
+    it('must not decrease quality below lower limit', () => {
+      const expectedSellIn = item.sellIn - 1;
+      const expectedQuality = QUALITY_LOWER_LIMIT;
+
+      const items = gildedRose.updateQuality();
+      expect(items[0].name).toBe(itemName);
+      expect(items[0].sellIn).toBe(expectedSellIn);
+      expect(items[0].quality).toBe(expectedQuality);
+    })
   });
 });
