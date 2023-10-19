@@ -3,7 +3,7 @@ import BasicItem from "@/items/BasicItem.class";
 import AgedBrie from "@/items/AgedBrie.class";
 import BackstagePass from "@/items/BackstagePass.class";
 import ConjuredItem from "@/items/ConjuredItem.class";
-import {QUALITY_LOWER_LIMIT, QUALITY_UPPER_LIMIT} from "@/constants";
+import {QUALITY_LOWER_LIMIT, QUALITY_UPPER_LIMIT} from "@/utils/constants";
 
 export default class GildedRose {
   items: Array<Item>;

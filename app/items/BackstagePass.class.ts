@@ -1,5 +1,5 @@
-import {isSellDateExpired} from "@/helpers";
-import {IUpdateItemQualityArgs} from "@/interfaces";
+import {isSellDateExpired} from "@/utils/helpers";
+import {IUpdateItemQualityArgs} from "@/utils/interfaces";
 
 export default class BackstagePass {
   public static getUpdatedQuality({sellIn, quality}: IUpdateItemQualityArgs): number {

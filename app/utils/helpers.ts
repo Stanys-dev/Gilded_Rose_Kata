@@ -1,4 +1,4 @@
-import {IGetQualityModificationValueArgs} from "@/interfaces";
+import {IGetQualityModificationValueArgs} from "@/utils/interfaces";
 
 export const isSellDateExpired = (sellIn: number): boolean => {
   return sellIn <= 0;

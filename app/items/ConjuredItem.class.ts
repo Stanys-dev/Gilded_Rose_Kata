@@ -1,5 +1,5 @@
-import {getQualityModificationValue} from "@/helpers";
-import {IUpdateItemQualityArgs} from "@/interfaces";
+import {getQualityModificationValue} from "@/utils/helpers";
+import {IUpdateItemQualityArgs} from "@/utils/interfaces";
 
 export default class ConjuredItem {
   private static readonly qualityModificationValue = 1;

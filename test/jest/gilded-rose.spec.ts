@@ -1,6 +1,6 @@
 import Item from "@/items/Item.class";
 import GildedRose from "@/gilded-rose";
-import {QUALITY_LOWER_LIMIT, QUALITY_UPPER_LIMIT} from "@/constants";
+import {QUALITY_LOWER_LIMIT, QUALITY_UPPER_LIMIT} from "@/utils/constants";
 
 describe('Gilded Rose', () => {
   describe('Basic Items', () => {
