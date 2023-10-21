@@ -1,4 +1,6 @@
-import {GildedRose, Item} from '@/gilded-rose';
+import Item from "@/items/Item.class";
+import GildedRose from "@/gilded-rose";
+
 
 const items = [
     new Item("+5 Dexterity Vest", 10, 20), //
