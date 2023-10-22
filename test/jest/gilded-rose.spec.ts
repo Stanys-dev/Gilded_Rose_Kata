@@ -158,9 +158,9 @@ describe('Gilded Rose', () => {
         });
     });
 
-    describe.skip('Conjured Items', () => {
+    describe('Conjured Items', () => {
         const itemName = 'Conjured';
-        const item = new Item(itemName, 1, 3);
+        const item = new Item(itemName, 1, 10);
         const gildedRose = new GildedRose([item]);
 
         it('must decrease sellIn by one and quality by two', () => {

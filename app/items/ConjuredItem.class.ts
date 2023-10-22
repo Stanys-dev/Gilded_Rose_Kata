@@ -2,7 +2,7 @@ import {getQualityModificationValue} from "@/utils/helpers";
 import {IUpdateItemQualityArgs} from "@/utils/interfaces";
 
 export default class ConjuredItem {
-  private static readonly qualityModificationValue = 1;
+  private static readonly qualityModificationValue = 2;
 
   public static getUpdatedQuality({sellIn, quality}: IUpdateItemQualityArgs): number {
     const qualityModificationValue = getQualityModificationValue({
